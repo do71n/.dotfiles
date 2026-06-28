@@ -1,0 +1,7 @@
+[user]
+	name = Howard
+	email = 62504060+Howard-K@users.noreply.github.com
+[core]
+	excludesfile = ~/.gitignore_global
+[init]
+	defaultBranch = main
