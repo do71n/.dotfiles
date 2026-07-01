@@ -1,0 +1,38 @@
+keybind = super+r=reload_config
+shell-integration-features = no-cursor, no-title
+
+
+background-opacity = 0.6
+background-blur-radius = 30
+
+theme = /Applications/Ghostty.app/Contents/Resources/ghostty/themes/rose pine moon
+
+background = 000000
+
+#title = 👻
+#macos-titlebar-proxy-icon = hidden
+macos-titlebar-style = hidden
+
+font-family = "Iosevka Term"
+font-style = "medium"
+font-size = 26
+
+mouse-hide-while-typing = true
+window-save-state = always
+
+#keybind (won't use)
+#keybind = ctrl+h=goto_split:left
+#keybind = ctrl+j=goto_split:bottom
+#keybind = ctrl+k=goto_split:top
+#keybind = ctrl+l=goto_split:right
+
+#keybind = ctrl+a>h=new_split:left
+#keybind = ctrl+a>j=new_split:down
+#keybind = ctrl+a>k=new_split:up
+#keybind = ctrl+a>l=new_split:right
+#keybind = ctrl+a>f=toggle_split_zoom
+#keybind = ctrl+a>n=next_tab
+#keybind = ctrl+a>p=previous_tab
+
+
+
