@@ -2,10 +2,10 @@ require("howard.remap")
 require("howard.set")
 require("howard.lazy_init")
 
+local autocmd = vim.api.nvim_create_autocmd
+-- Seperating 2 Groups is not necessarily needed, but we do it this way.
 local augroup = vim.api.nvim_create_augroup
 local TheHowardGroup = augroup('Howard', {})
-
-local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
 function R(name)
@@ -18,7 +18,7 @@ vim.filetype.add({
     }
 })
 
--- show the Yank
+-- show yank after copies
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
@@ -30,12 +30,14 @@ autocmd('TextYankPost', {
     end,
 })
 
+-- Strip trailing whitespace on save, read the command
 autocmd({"BufWritePre"}, {
     group = TheHowardGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
 
+-- Set LSP Keymaps once an LSP server attaches to the buffer
 autocmd('LspAttach', {
     group = TheHowardGroup,
     callback = function(e)
