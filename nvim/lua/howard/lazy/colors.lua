@@ -1,5 +1,3 @@
-local antirez_comment = "#B9CA4A"
-
 function ColorMyPencils(color)
 	color = color or "rose-pine"
 	vim.cmd.colorscheme(color)
@@ -8,6 +6,7 @@ function ColorMyPencils(color)
  	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 end
+
 
 return {
     {
@@ -28,7 +27,10 @@ return {
                     sidebars = "dark", -- style for sidebars, see below
                     floats = "dark", -- style for floating windows
                 },
-            }) end },
+             })
+        end
+    },
+
     {
         "rose-pine/neovim",
         name = "rose-pine",
@@ -41,7 +43,7 @@ return {
                     transparency = true;
                 },
                 highlight_groups = {
-                    Comment = { fg = antirez_comment },
+                    Comment = { fg = "subtle" },
                     StatusLineNC = { fg = "muted", bg = "surface" },
                     StatusLine = { fg = "subtle", bg = "surface" },
                     NormalFloat = { fg = "subtle", bg = "surface" },
@@ -51,6 +53,26 @@ return {
 
             ColorMyPencils("rose-pine")
 
+            -- ============ custom snippest for switching comments colors ============ --
+            local read_comment_mode = false
+            local antirez_highlight = "#B9CA4A"
+            local default_comment_fg
+
+            local function change_comment_color(on)
+                if default_comment_fg == nil then
+                    default_comment_fg = vim.api.nvim_get_hl(0, { name = "Comment", link = false }).fg
+                end
+                if on then
+                    vim.api.nvim_set_hl(0, "Comment", { fg = antirez_highlight })
+                else
+                    vim.api.nvim_set_hl(0, "Comment", { fg = default_comment_fg })
+                end
+            end
+
+            vim.api.nvim_create_user_command("Rdc", function()
+                read_comment_mode = not read_comment_mode
+                change_comment_color(read_comment_mode)
+            end, { nargs = 0 })
         end
     },
 
@@ -61,7 +83,6 @@ return {
                 flavour = "macchiato",
                 transparent_background = true,
             })
-
         end
     },
 
