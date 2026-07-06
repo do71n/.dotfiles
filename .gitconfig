@@ -4,6 +4,7 @@
 [init]
     defaultBranch = main
 [core]
+    editor = nvim
 	excludesfile = ~/.gitignore_global
 [windows]
     appendAtomically = false
