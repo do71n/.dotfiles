@@ -34,3 +34,5 @@ vim.opt.updatetime = 50
 vim.opt.splitright = true
 -- vim.opt.colorcolumn = "80"
 
+vim.env.CC = "gcc"
+vim.env.CXX = "g++"
