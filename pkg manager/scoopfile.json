@@ -1,0 +1,171 @@
+{
+    "buckets": [
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main.git",
+            "Updated": "2026-07-02T09:20:59+08:00",
+            "Manifests": 1593
+        },
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras",
+            "Updated": "2026-07-02T09:23:04+08:00",
+            "Manifests": 2324
+        },
+        {
+            "Name": "nerd-fonts",
+            "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
+            "Updated": "2026-06-28T02:09:10+08:00",
+            "Manifests": 367
+        }
+    ],
+    "apps": [
+        {
+            "Version": "26.01",
+            "Info": "",
+            "Updated": "2026-05-26T13:09:00.1746899+08:00",
+            "Source": "main",
+            "Name": "7zip"
+        },
+        {
+            "Version": "3.4.0",
+            "Info": "",
+            "Updated": "2026-05-29T17:42:54.8291399+08:00",
+            "Source": "nerd-fonts",
+            "Name": "CascadiaCode-NF"
+        },
+        {
+            "Version": "10.4.2",
+            "Info": "",
+            "Updated": "2026-05-26T12:06:49.6199222+08:00",
+            "Source": "main",
+            "Name": "fd"
+        },
+        {
+            "Version": "8.1.1",
+            "Info": "",
+            "Updated": "2026-06-10T12:56:19.0057017+08:00",
+            "Source": "main",
+            "Name": "ffmpeg"
+        },
+        {
+            "Version": "0.73.1",
+            "Info": "",
+            "Updated": "2026-05-29T15:54:36.730237+08:00",
+            "Source": "main",
+            "Name": "fzf"
+        },
+        {
+            "Version": "15.2.0",
+            "Info": "",
+            "Updated": "2026-05-26T13:09:28.5051031+08:00",
+            "Source": "main",
+            "Name": "gcc"
+        },
+        {
+            "Version": "3.4.0",
+            "Info": "",
+            "Updated": "2026-05-29T17:00:17.2791361+08:00",
+            "Source": "nerd-fonts",
+            "Name": "Iosevka-NF"
+        },
+        {
+            "Version": "3.4.0",
+            "Info": "",
+            "Updated": "2026-05-29T17:38:05.855441+08:00",
+            "Source": "nerd-fonts",
+            "Name": "IosevkaTerm-NF"
+        },
+        {
+            "Version": "3.4.0",
+            "Info": "",
+            "Updated": "2026-05-29T17:47:16.5584792+08:00",
+            "Source": "nerd-fonts",
+            "Name": "JetBrainsMono-NF"
+        },
+        {
+            "Version": "0.62.1",
+            "Info": "",
+            "Updated": "2026-05-29T15:55:51.6267909+08:00",
+            "Source": "extras",
+            "Name": "lazygit"
+        },
+        {
+            "Version": "4.4.1",
+            "Info": "",
+            "Updated": "2026-06-01T11:35:03.1045011+08:00",
+            "Source": "main",
+            "Name": "make"
+        },
+        {
+            "Version": "2.24.0",
+            "Info": "",
+            "Updated": "2026-06-25T12:06:43.7089755+08:00",
+            "Source": "main",
+            "Name": "navi"
+        },
+        {
+            "Version": "0.12.3",
+            "Info": "",
+            "Updated": "2026-06-26T18:45:18.6310149+08:00",
+            "Source": "main",
+            "Name": "neovim"
+        },
+        {
+            "Version": "26.3.0",
+            "Info": "",
+            "Updated": "2026-06-02T10:12:37.7147547+08:00",
+            "Source": "main",
+            "Name": "nodejs"
+        },
+        {
+            "Version": "29.14.0",
+            "Info": "",
+            "Updated": "2026-05-27T17:37:00.9346669+08:00",
+            "Source": "main",
+            "Name": "oh-my-posh"
+        },
+        {
+            "Version": "1.17.13",
+            "Info": "",
+            "Updated": "2026-07-02T11:50:55.9580613+08:00",
+            "Source": "C:\\Users\\Kwa30417\\scoop\\buckets\\main\\bucket\\opencode.json",
+            "Name": "opencode"
+        },
+        {
+            "Version": "15.1.0",
+            "Info": "",
+            "Updated": "2026-05-26T12:06:48.5271374+08:00",
+            "Source": "main",
+            "Name": "ripgrep"
+        },
+        {
+            "Version": "0.6.1",
+            "Info": "",
+            "Updated": "2026-06-25T12:03:10.3760302+08:00",
+            "Source": "main",
+            "Name": "tldr"
+        },
+        {
+            "Version": "0.11.16",
+            "Info": "",
+            "Updated": "2026-05-26T14:49:29.8379496+08:00",
+            "Source": "main",
+            "Name": "uv"
+        },
+        {
+            "Version": "26.5.6",
+            "Info": "",
+            "Updated": "2026-07-02T10:37:40.3794158+08:00",
+            "Source": "main",
+            "Name": "yazi"
+        },
+        {
+            "Version": "0.9.9",
+            "Info": "",
+            "Updated": "2026-06-26T14:08:53.6029627+08:00",
+            "Source": "main",
+            "Name": "zoxide"
+        }
+    ]
+}
