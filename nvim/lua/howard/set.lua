@@ -36,3 +36,8 @@ vim.opt.splitright = true
 
 vim.env.CC = "gcc"
 vim.env.CXX = "g++"
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99       -- start with all folds open
+vim.opt.foldcolumn = "1"     -- show fold gutter (width 1)
