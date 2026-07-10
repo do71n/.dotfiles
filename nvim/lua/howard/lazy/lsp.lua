@@ -68,9 +68,19 @@ return { "neovim/nvim-lspconfig",
             --         })
             --     end,
             -- },
-            automatic_enable = true,
+
+            -- fix for This tells mason-lspconfig to auto-enable only lua_ls — clangd won't be auto-attached
+            automatic_enable = { "lua_ls" },
         })
 
+        lspconfig.clangd.setup({
+            capabilities = capabilities,
+            cmd = {
+                "clangd",
+                -- target the gcc binary installed via Scoop.
+                "--query-driver=C:/Users/Kwa30417/scoop/apps/gcc/current/bin/gcc.exe",
+            },
+        })
         -- lspconfig.lua_ls.setup({
         --     capabilities = capabilities,
         --     settings = {
