@@ -47,6 +47,7 @@ return {
                     StatusLineNC = { fg = "muted", bg = "surface" },
                     StatusLine = { fg = "subtle", bg = "surface" },
                     NormalFloat = { fg = "subtle", bg = "surface" },
+                    ["@keyword.operator"] = { fg = "pine" },
                     -- Pmenu = { fg = "subtle", bg = "surface" },
                 },
             })
