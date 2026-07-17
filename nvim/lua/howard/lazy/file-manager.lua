@@ -31,6 +31,9 @@ return{
         config = function()
             require("oil").setup({
                 experimental_watch_for_changes = true,
+                view_options = {
+                    show_hidden = true
+                },
                 columns = {
                     "icon",
                     "permissions",
