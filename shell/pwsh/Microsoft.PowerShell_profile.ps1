@@ -1,13 +1,9 @@
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/robbyrussell.omp.json" | Invoke-Expression
 
-function neovide_border_less {
-    neovide --frame none $args
-}
-Set-Alias neov neovide_border_less
-
 Set-PSReadLineOption -EditMode Vi
-# ---- ADD LINUX/EMACS SHORTCUTS TO VI INSERT MODE ----
+Set-PSReadLineOption -PredictionViewStyle ListView
 
+# ---- ADD LINUX/EMACS SHORTCUTS TO VI INSERT MODE ----
 # History navigation (Ctrl+P and Ctrl+N)
 Set-PSReadLineKeyHandler -Chord 'Ctrl+p' -ViMode Insert -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Chord 'Ctrl+n' -ViMode Insert -Function HistorySearchForward
@@ -44,10 +40,8 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+h' -ViMode Insert -Function BackwardDelete
 
 # Delete the single character under the cursor (Delete alternative)
 Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -ViMode Insert -Function DeleteChar
-
 # ---- end of the config ----
 
-Set-PSReadLineOption -PredictionViewStyle ListView
 # Import PSFzf and bind Ctrl+R
 Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
@@ -77,7 +71,6 @@ Write-Host "`e[5 q" -NoNewLine
 
 #alias
 Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
-
 function nvid {
     neovide @args
 }
