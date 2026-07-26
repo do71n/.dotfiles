@@ -44,15 +44,15 @@ return {
             vim.keymap.set('n', '<leader>du', function() dapui.toggle() end, { desc = "Debug: Toggle UI" })
 
             --Standard Debugging Keymaps
-            vim.keymap.set('n', '<leader>sd', function() dap.continue() end, { desc = "Debug: Start/Continue" })
-            vim.keymap.set('n', '<leader>rd', function() dap.restart() end, { desc = "Debug: Restart" })
-            vim.keymap.set('n', '<leader>td', function() dap.terminate() end, { desc = "Debug: Terminate" })
+            vim.keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end, { desc = "Debug: Breakpoint" })
+            vim.keymap.set('n', '<leader>dc', function() dap.continue() end, { desc = "Debug: Start/Continue" })
+            vim.keymap.set('n', '<leader>dr', function() dap.restart() end, { desc = "Debug: Restart" })
+            vim.keymap.set('n', '<leader>dt', function() dap.terminate() end, { desc = "Debug: Terminate" })
             vim.keymap.set('n', '<leader>so', function() dap.step_over() end, { desc = "Debug: Step Over" })
             vim.keymap.set('n', '<leader>su', function() dap.step_out() end, { desc = "Debug: Step out" })
             vim.keymap.set('n', '<leader>si', function() dap.step_into() end, { desc = "Debug: Step Into" })
             vim.keymap.set('n', '<leader>sb', function() dap.step_back() end, { desc = "Debug: Step Back" })
 
-            vim.keymap.set('n', '<leader>b', function() dap.toggle_breakpoint() end, { desc = "Debug: Breakpoint" })
             vim.keymap.set('n', '<leader>B', function()
                 dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
             end, { desc = "Debug: Set Conditional Breakpoint" })

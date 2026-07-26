@@ -15,5 +15,6 @@ return {
                 null_ls.builtins.formatting.rubocop,
                 require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
             },
-})    end
+        })
+    end
 }

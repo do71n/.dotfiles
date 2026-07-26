@@ -3,10 +3,7 @@ function ColorMyPencils(color)
 	vim.cmd.colorscheme(color)
 
  	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
- 	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-
 end
-
 
 return {
     {
@@ -17,7 +14,7 @@ return {
                 -- or leave it empty to use the default settings
                 style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
                 transparent = true, -- Enable this to disable setting the background color
-                terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+                terminal_colors = not vim.g.neovide, -- Configure the colors used when opening a `:terminal` in Neovim
                 styles = {
                     -- Style to be applied to different syntax groups
                     -- Value is any valid attr-list value for `:help nvim_set_hl`
@@ -40,7 +37,7 @@ return {
                 variant = "moon",
                 styles = {
                     italics = false;
-                    transparency = true;
+                    transparency = not vim.g.neovide;
                 },
                 highlight_groups = {
                     Comment = { fg = "subtle" },
@@ -82,7 +79,7 @@ return {
         config = function()
             require("catppuccin").setup({
                 flavour = "macchiato",
-                transparent_background = true,
+                transparent_background = not vim.g.neovide,
             })
         end
     },
