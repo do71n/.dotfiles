@@ -22,7 +22,7 @@ return { "neovim/nvim-lspconfig",
         local capabilities = cmp_lsp.default_capabilities();
 
         require("fidget").setup({})
-        require("mason").setup()
+        require("mason").setup({})
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
