@@ -41,6 +41,7 @@ return {
                 "tsx",
                 "yaml",
                 "html",
+                "kdl",
                 "css",
                 "prisma",
                 "markdown",
