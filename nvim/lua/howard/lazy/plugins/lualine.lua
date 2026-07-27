@@ -22,12 +22,13 @@ return {
       return string.format('Hex:0x%02X', vim.fn.char2nr(char))
     end
 
+    local left_sep = vim.g.neovide and '░▒▓' or '▓▒░'
     require('lualine').setup({
       options = {
         theme = 'auto',
         icons_enabled = true,
         component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        section_separators = { left = left_sep, right = '' },
         disabled_filetypes = {
           statusline = { 'lazygit' },
         },
@@ -40,7 +41,7 @@ return {
           { 'branch', icon = '', color = { gui = 'bold' } },
           { 'diff', symbols = { added = '+', modified = '~', removed = '-' }, colored = true },
           'fileformat',
-          { 'filetype', icon_only = true },
+          { 'filetype', icon_only = true, separator = { right = ''} },
         },
         lualine_c = {
           {

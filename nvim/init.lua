@@ -12,7 +12,7 @@ if vim.fn.has("win32") == 1 then
 
     -- Allow Ctrl+V to paste in Insert mode and Command-line mode, Normal mode and neovim terminal
     vim.keymap.set({ 'i', 'c' }, '<C-v>', '<C-r>+', { desc = 'Paste from system clipboard' })
-    vim.keymap.set('n', '<C-v>', '"+p', { desc = 'Paste from system clipboard' })
+    -- vim.keymap.set('n', '<C-v>', '"+p', { desc = 'Paste from system clipboard' }) conflict with visual mode
     vim.keymap.set('t', '<C-v>', '<C-\\><C-n>"+pi', { desc = 'Paste in terminal' })
 
     -- resolve C compiler issue on window system
