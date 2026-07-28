@@ -42,6 +42,7 @@ return {
                 "yaml",
                 "html",
                 "kdl",
+                "toml",
                 "css",
                 "prisma",
                 "markdown",
