@@ -35,9 +35,8 @@ vim.opt.updatetime = 50
 vim.opt.splitright = true
 -- vim.opt.colorcolumn = "80"
 
+-- folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldlevel = 99       -- start with all folds open
-vim.opt.foldcolumn = "1"     -- show fold gutter (width 1)
-
--- vim.o.statusline = "[b%n] %{&ff}%y %f %= %{&fileencoding} %l/%L [col %c] Hex:0x%B" -- [window no :buffer no]
+vim.opt.foldlevel = 99
+vim.opt.foldcolumn = "1"

@@ -4,7 +4,9 @@ return {
         require('nvim-highlight-colors').setup({
             render = 'virtual',       -- Uses a symbol instead of painting the text background
             virtual_symbol = '●',
-            virtual_symbol_position = 'inline',
+            virtual_symbol_position = 'eow',
+            virtual_symbol_prefix = ' ',
+            virtual_symbol_suffix = ' ',
         })
     end,
 }
