@@ -25,7 +25,8 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Format the current buffer using the active LSP server
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- disabled: replaced by conform.lua and lint.lua
+-- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- quick fix list navigation
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -64,15 +65,4 @@ end, { desc = "Vsplit and move to the right" })
 vim.keymap.set("n", "<leader>n", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<leader>p", "<cmd>cprev<CR>")
 
--- terminal navigation
-vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { desc = "Exit terminal mode" })
-vim.keymap.set('n', '<leader>ot', function()
-    -- If it's an Oil buffer, it handles the conversion to a real path automatically
-    local dir = vim.fn.expand("%:p:h"):gsub("oil://", "")
-    vim.cmd("belowright split")
-    vim.cmd("resize 20")
-    -- 'lcd' changes the directory ONLY for this new window
-    vim.cmd("lcd " .. dir)
-    vim.cmd("term")
-    vim.cmd("startinsert")
-end, { desc = "Open Terminal in current buffer directory" })
+vim.keymap.set('n', '<leader>ot', require("howard.helper.terminal").open_in_buffer_dir, { desc = "Open Terminal in current buffer directory" })

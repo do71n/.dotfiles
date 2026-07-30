@@ -14,7 +14,7 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -34,6 +34,7 @@ vim.opt.updatetime = 50
 
 vim.opt.splitright = true
 -- vim.opt.colorcolumn = "80"
+vim.o.smartcase = true
 
 -- folding
 vim.opt.foldmethod = "expr"
