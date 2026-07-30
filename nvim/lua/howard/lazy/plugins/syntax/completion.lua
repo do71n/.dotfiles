@@ -47,10 +47,21 @@ return { "hrsh7th/nvim-cmp",
                 { name = 'path' }
             }),
             formatting = {
-                format = lspkind.cmp_format({
-                    maxwidth = 50,          -- 1. Truncates long completion items
-                    ellipsis_char = "...",  -- 2. Appends '...' when truncated
-                }),
+                format = function (entry, item)
+                   local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
+
+                    item = lspkind.cmp_format({
+                        maxwidth = 50,          -- 1. Truncates long completion items
+                        ellipsis_char = "...",  -- 2. Appends '...' when truncated
+                    })(entry, item)
+
+                    if color_item.abbr_hl_group then
+                        item.kind_hl_group = color_item.abbr_hl_group
+                        item.kind = color_item.abbr
+                    end
+
+                    return item
+                end,
             },
         })
 

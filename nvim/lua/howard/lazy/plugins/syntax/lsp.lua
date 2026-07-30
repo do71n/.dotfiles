@@ -23,12 +23,6 @@ return { "neovim/nvim-lspconfig",
 
         require("fidget").setup({})
         require("mason").setup({})
-        require("mason-lspconfig").setup({
-            ensure_installed = {
-                "lua_ls",
-                "clangd",
-            },
-        })
 
         -- Set LSP Keymaps once an LSP server attaches to the buffer
         vim.api.nvim_create_autocmd('LspAttach', {
@@ -54,23 +48,32 @@ return { "neovim/nvim-lspconfig",
         vim.diagnostic.config({
             update_in_insert = true,
             virtual_text = {
-                virtual_text = false,
-                virtual_lines = true,
-                -- current_lines = true
+                prefix = "●",
+                spacing = 2,
             },
+            virtual_lines = true,
             underline = true,
             float = {
                 focusable = false,
                 style = "minimal",
                 border = "rounded",
-                source = "always",
+                source = true,
                 header = "",
                 prefix = "",
             },
         })
 
+        require("mason-lspconfig").setup({
+            ensure_installed = {
+                "lua_ls",
+                "clangd",
+                "cssls",
+            },
+        })
+
         --- ============================ language server ============================
         vim.lsp.config("*", { capabilities = capabilities, })
+
         --- ======
         --- C
         --- ======
@@ -85,5 +88,28 @@ return { "neovim/nvim-lspconfig",
         })
         vim.lsp.enable("clangd")
 
+        --- =====
+        --- Lua
+        --- ======
+        vim.lsp.config("lua_ls", {
+            capabilities = capabilities,
+            on_init = function(client)
+                client.server_capabilities.colorProvider = false -- pass the handle to highlight-color.nvim
+            end,
+        })
+        vim.lsp.enable("lua_ls")
+
+        --- =====
+        --- CSS
+        --- ======
+        vim.lsp.config("cssls", {
+            cmd = { "vscode-css-language-server", "--stdio" },
+            filetypes = { "css", "scss", "less" },
+            capabilities = capabilities,
+            on_init = function(client)
+                client.server_capabilities.colorProvider = false -- pass the handle to highlight-color.nvim
+            end,
+        })
+        vim.lsp.enable("cssls")
     end
 }
