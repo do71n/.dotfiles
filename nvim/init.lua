@@ -2,12 +2,12 @@ if vim.g.neovide then
     vim.g.neovide_opacity = 0.95
     vim.g.neovide_corner_preference = "round"
 
-	if vim.fn.has("win32") == 1 or vim.fn.has("win64") then
+	if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
         vim.g.neovide_title_background_color = "#191724" -- match Rosé Pine
     end
 end
 
-if vim.fn.has("win32") == 1 or vim.fn.has("win64") then
+if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
     vim.o.shell = "pwsh"
     vim.g.undotree_DiffCommand = 'C:/Program Files/Git/usr/bin/diff.exe' -- hardcoded path, updated for actual diff.exe location
 
@@ -19,6 +19,9 @@ if vim.fn.has("win32") == 1 or vim.fn.has("win64") then
     -- resolve C compiler issue on window system
     vim.env.CC = "gcc"
     vim.env.CXX = "g++"
+else
+    vim.g.undotree_DiffCommand = "diff"
+    vim.o.shell = "zsh"
 end
 
 require("howard")
