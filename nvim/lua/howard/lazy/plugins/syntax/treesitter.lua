@@ -60,6 +60,8 @@ return {
                 "haskell",
                 "rust",
                 "jsdoc",
+                "python",
+                "latex",
             }
 
             local installed = require("nvim-treesitter.config").get_installed()

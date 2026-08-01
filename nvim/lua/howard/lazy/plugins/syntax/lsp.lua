@@ -68,17 +68,20 @@ return { "neovim/nvim-lspconfig",
                 "lua_ls",
                 "clangd",
                 "cssls",
+                "rust_analyzer",
+                "ts_ls",
+                "pyright",
+                "texlab",
             },
         })
 
         --- ============================ language server ============================
-        vim.lsp.config("*", { capabilities = capabilities, })
+        vim.lsp.config("*", { capabilities = capabilities, }) -- enable capabilities for all lsp
 
         --- ======
         --- C
         --- ======
         vim.lsp.config("clangd", {
-            capabilities = capabilities,
             cmd = {
                 "clangd",
                 "--background-index",
@@ -86,30 +89,106 @@ return { "neovim/nvim-lspconfig",
                 "--query-driver=C:/Users/dontin/scoop/apps/gcc/current/bin/gcc.exe",
             },
         })
-        vim.lsp.enable("clangd")
 
-        --- =====
+        --- ======
         --- Lua
         --- ======
         vim.lsp.config("lua_ls", {
-            capabilities = capabilities,
             on_init = function(client)
                 client.server_capabilities.colorProvider = false -- pass the handle to highlight-color.nvim
             end,
         })
-        vim.lsp.enable("lua_ls")
 
-        --- =====
+        --- ======
         --- CSS
         --- ======
         vim.lsp.config("cssls", {
             cmd = { "vscode-css-language-server", "--stdio" },
             filetypes = { "css", "scss", "less" },
-            capabilities = capabilities,
             on_init = function(client)
                 client.server_capabilities.colorProvider = false -- pass the handle to highlight-color.nvim
             end,
         })
-        vim.lsp.enable("cssls")
+
+        --- ======
+        --- Rust
+        --- ======
+        vim.lsp.config("rust_analyzer", {
+            settings = {
+                ["rust-analyzer"] = {
+                    inlayHints = {
+                        typeHints = { enable = true },
+
+                        parameterHints = { enable = false },
+                        chainingHints = { enable = false },
+                        bindingModeHints = { enable = false },
+                        closureReturnTypeHints = { enable = "never" },
+                        lifetimeElisionHints = { enable = "never" },
+                        reborrowHints = { enable = false },
+                        closingBraceHints = { enable = false },
+                    },
+                },
+            },
+        })
+
+        --- ==========
+        --- Typescript
+        --- ==========
+        vim.lsp.config("ts_ls", {
+            filetypes = {
+                "typescript",
+                "typescriptreact",
+                "javascript",
+                "javascriptreact",
+            },
+        })
+
+        --- ======
+        --- Python
+        --- ======
+        vim.lsp.config("pyright", {
+            settings = {
+                python = {
+                    analysis = {
+                        typeCheckingMode = "basic", -- "strict" | "basic" | "off"
+                        autoSearchPaths = true,
+                        useLibraryCodeForTypes = true,
+                    },
+                },
+            },
+        })
+
+        --- ======
+        --- LaTeX
+        --- ======
+        vim.lsp.config("texlab", {
+            settings = {
+                texlab = {
+                    build = {
+                        onSave = true,
+                        forwardSearchAfter = true,
+                        executable = "zathura",
+                        args = { "--synctex-forward", "%l:1:%f", "%p" },
+                    },
+                    forwardSearch = {
+                        executable = "zathura",
+                        args = { "--synctex-forward", "%l:1:%f", "%p" },
+                    },
+                    chktex = { onOpenAndSave = true },
+                },
+            },
+        })
+
+        vim.lsp.enable({
+            "clangd",
+            "lua_ls",
+            "cssls",
+            "rust_analyzer",
+            "ts_ls",
+            "pyright",
+            "texlab",
+        })
+
+
     end
 }
