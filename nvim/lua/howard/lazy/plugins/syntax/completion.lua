@@ -3,7 +3,7 @@ return { "hrsh7th/nvim-cmp",
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-cmdline", -- complement with mini.cmdline
         "saadparwaiz1/cmp_luasnip",
         "L3MON4D3/LuaSnip",
         "onsails/lspkind.nvim",
@@ -14,6 +14,7 @@ return { "hrsh7th/nvim-cmp",
         -- vim.o.winborder = "rounded"
 
         local cmp = require('cmp')
+        local luasnip = require('luasnip')
         local lspkind = require('lspkind')
 
         -- autocompletion with lausnip
@@ -25,7 +26,7 @@ return { "hrsh7th/nvim-cmp",
             },
             snippet = {
                 expand = function(args)
-                    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                    luasnip.lsp_expand(args.body) -- For `luasnip` users.
                 end,
             },
             window = {
@@ -65,5 +66,9 @@ return { "hrsh7th/nvim-cmp",
             },
         })
 
+      cmp.setup.cmdline({ "/", "?" }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = { { name = "buffer" } },
+      })
     end
 }

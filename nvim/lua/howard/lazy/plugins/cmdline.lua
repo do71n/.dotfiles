@@ -10,13 +10,13 @@ return {
                 delay = 50,
             },
 
-            autocorrect = {
-                enable = false,
-            },
-
             autopeek = {
                 enable = true,
-                n_context = 1, -- Shows 1 line of extra context above and below your target range
+                n_context = 3, -- Shows 1 line of extra context above and below your target range
+            },
+
+            autocorrect = {
+                enable = false,
             },
         })
     end,
