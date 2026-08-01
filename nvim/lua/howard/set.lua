@@ -1,43 +1,51 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
+--- UI
+vim.opt.shortmess:append("I") -- don't show intro message
 vim.opt.guicursor = ""
 vim.opt.cursorline = true
+vim.opt.termguicolors = true
+vim.opt.wrap = true
+-- vim.opt.colorcolumn = "80"
 
+--- line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+--- indentatio or tabs
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+-- vim.opt.smartindent = true (handle by treesitter indentexpr)
 
-vim.opt.smartindent = true
-
-vim.opt.wrap = true
-
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
-
+--- search
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-
-vim.opt.termguicolors = true
-
-vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
-
-vim.opt.updatetime = 50
-
-vim.opt.splitright = true
--- vim.opt.colorcolumn = "80"
+vim.opt.ignorecase = true
 vim.o.smartcase = true
 
--- folding
+--- scroll / viewport
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+
+--- files / presistence
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
+--- window split
+vim.opt.splitright = true
+
+--- Misc / Timing
+vim.opt.isfname:append("@-@") -- read hyphens in between path name
+vim.opt.updatetime = 50
+
+--- folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
 vim.opt.foldcolumn = "1"
+
+--- disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

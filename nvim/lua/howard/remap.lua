@@ -20,9 +20,8 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "paste without losing clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "delete without overwriting the register"})
 
--- questionable?
+-- disable Ex-mode
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Format the current buffer using the active LSP server
 -- disabled: replaced by conform.lua and lint.lua
@@ -50,17 +49,13 @@ vim.keymap.set(
     "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
 )
 
--- config flile management: 1. open config file (unix), 2. source
+-- nvim config file quick edit (QoL)
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/howard/init.lua<CR>");
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
+vim.keymap.set("n", "<leader><leader>", function() vim.cmd("so") end)
 
--- split vertical windows
-vim.keymap.set("n", "<C-w>v", function()
-    vim.cmd("vsplit")
-    vim.cmd("wincmd l")
-end, { desc = "Vsplit and move to the right" })
+-- split horizotal or vertical windows
+vim.keymap.set("n", "<C-w>v", function() vim.cmd("vsplit") end, { desc = "Vsplit and move to the right" })
+vim.keymap.set("n", "<C-w>-", function() vim.cmd("split") end, { desc = "Hsplit and move to the top" })
 
 vim.keymap.set("n", "<leader>n", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<leader>p", "<cmd>cprev<CR>")
