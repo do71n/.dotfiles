@@ -82,7 +82,16 @@ return {
                     -- query for this filetype; otherwise leave smartindent /
                     -- cindent in charge so e.g. `{` Enter still indents.
                     local ft = vim.bo.filetype
-                    if ft ~= "" and vim.treesitter.query.get(ft, "indents") then
+                    if ft == "" then return end
+
+                    -- FIX: wrap query.get in pcall. On Neovim 0.12, query.get
+                    -- internally asserts the parser exists before checking for
+                    -- indents.scm, so for parser-less filetypes (rasi, txt, conf,
+                    -- etc.) it throws instead of returning nil. The pcall makes
+                    -- the gate silent for those filetypes, preserving the original
+                    -- "skip if no indents query" semantics.
+                    local ok, query = pcall(vim.treesitter.query.get, ft, "indents")
+                    if ok and query then
                         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
                     end
                 end,
