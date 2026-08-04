@@ -60,4 +60,5 @@ vim.keymap.set("n", "<C-w>-", function() vim.cmd("split") end, { desc = "Hsplit 
 vim.keymap.set("n", "<leader>n", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<leader>p", "<cmd>cprev<CR>")
 
-vim.keymap.set('n', '<leader>ot', require("howard.helper.terminal").open_in_buffer_dir, { desc = "Open Terminal in current buffer directory" })
+vim.keymap.set('n', '<leader>ot', require("howard.helper.terminal").open, { desc = "Open floating terminal in buffer directory" })
+vim.keymap.set('n', '<leader>ct', require("howard.helper.terminal").close, { desc = "Close floating terminal" })
