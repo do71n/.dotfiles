@@ -10,3 +10,5 @@
     appendAtomically = false
 [http]
 	schannelCheckRevoke = false
+[pull]
+	rebase = true
