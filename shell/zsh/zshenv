@@ -1,0 +1,12 @@
+# Inform zsh where is the configuration folder
+# Copy to sytem wide environment:
+# linux: cp ~/.dotfiles/shell/zsh/zshenv /etc/zsh/zshenv
+# MacOS: cp ~/.dotfiles/shell/zsh/zshenv /etc/zshenv
+
+if [[ -z "$XDG_CONFIG_HOME" ]]; then
+  export XDG_CONFIG_HOME="$HOME/.config"
+fi
+
+if [[ -d "$XDG_CONFIG_HOME/zsh" ]]; then
+  export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+fi

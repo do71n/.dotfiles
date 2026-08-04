@@ -1,9 +1,15 @@
-alias vim="nvim"
-alias lg="lazygit"
 alias path="echo $PATH | tr ':' '\n'"
 
 # ---- Eza (better ls) -----
-alias ls="eza -l --color=always --git --icons=auto --sort=extension"
+alias ls="eza -l -lh --color=always --git --icons=auto --sort=extension"
+alias lh="eza -l -lah --color=always --git --icons --sort=extension"
+alias tree="eza --tree --icons"
+compdef eza=ls
+
+# ---- Eza (better ls) -----
+alias grep="rg --color=auto"
+alias diff="diff --color=auto"
+alias df="df -h"
 
 # thefuck alias
 # eval $(thefuck --alias)
@@ -12,6 +18,8 @@ alias ls="eza -l --color=always --git --icons=auto --sort=extension"
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
 alias cd="z"
+
+alias cat="bat"
 
 # ---- yazi (file manager) ----
 function fe() {
