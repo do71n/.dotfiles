@@ -1,4 +1,4 @@
-return{
+return {
     {
         "stevearc/oil.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -15,14 +15,14 @@ return{
                     "mtime",
                 },
                 delete_to_trash = true,
-                skip_confirm_for_simple_edits = true;
+                skip_confirm_for_simple_edits = true,
             })
             -- use g. to open hidden file
             vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
         end,
     },
     {
-        'nvim-mini/mini.nvim',
+        'nvim-mini/mini.files',
         version = false, -- Use the main branch for the latest features and bug fixes
         config = function()
             -- Only load the file explorer module
@@ -46,7 +46,7 @@ return{
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
-        config = function ()
+        config = function()
             local harpoon = require("harpoon")
 
             harpoon:setup()
