@@ -29,6 +29,8 @@ return {
                 vim.opt.rtp:append(ts_runtime)
             end
 
+            -- Register qml aliases
+            vim.treesitter.language.register("qmljs", "qml")
             -- Register Haskell aliases (literate Haskell .lhs files)
             vim.treesitter.language.register("haskell", { "lhaskell" })
 
@@ -62,6 +64,8 @@ return {
                 "jsdoc",
                 "python",
                 "latex",
+                "qmljs",
+                "qmldir",
             }
 
             local installed = require("nvim-treesitter.config").get_installed()

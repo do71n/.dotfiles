@@ -46,13 +46,16 @@ return { "neovim/nvim-lspconfig",
 
         -- diagnostic text
         vim.diagnostic.config({
-            update_in_insert = true,
+            update_in_insert = false,
+            underline = true,
+            signs = false,
+            severity_sort = true,
             virtual_text = {
                 prefix = "●",
                 spacing = 2,
+                severity = vim.diagnostic.severity.ERROR
             },
-            virtual_lines = true,
-            underline = true,
+            virtual_lines = { current_line = true },
             float = {
                 focusable = false,
                 style = "minimal",
@@ -167,8 +170,6 @@ return { "neovim/nvim-lspconfig",
                     build = {
                         onSave = true,
                         forwardSearchAfter = true,
-                        executable = "zathura",
-                        args = { "--synctex-forward", "%l:1:%f", "%p" },
                     },
                     forwardSearch = {
                         executable = "zathura",
@@ -179,6 +180,20 @@ return { "neovim/nvim-lspconfig",
             },
         })
 
+        --- ======
+        --- qml
+        --- ======
+        vim.lsp.config("qmlls", {
+            cmd = { "qmlls6" },
+            filetypes = { "qml", "qmljs" },
+            root_markers = { ".git", "shell.qml", "qmldir" },
+            on_init = function(client)
+                if client.server_capabilities then
+                    client.server_capabilities.semanticTokensProvider = nil
+                end
+            end
+        })
+
         vim.lsp.enable({
             "clangd",
             "lua_ls",
@@ -187,7 +202,9 @@ return { "neovim/nvim-lspconfig",
             "ts_ls",
             "pyright",
             "texlab",
+            "qmlls",
         })
+
 
 
     end
