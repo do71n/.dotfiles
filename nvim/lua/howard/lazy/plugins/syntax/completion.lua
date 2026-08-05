@@ -1,16 +1,18 @@
-return { "hrsh7th/nvim-cmp",
+return {
+    "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline", -- complement with mini.cmdline
+        "dmitmel/cmp-cmdline-history",
         "saadparwaiz1/cmp_luasnip",
         "L3MON4D3/LuaSnip",
         "onsails/lspkind.nvim",
         "nvim-tree/nvim-web-devicons",
     },
 
-    config = function ()
+    config = function()
         -- vim.o.winborder = "rounded"
 
         local cmp = require('cmp')
@@ -44,16 +46,16 @@ return { "hrsh7th/nvim-cmp",
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }, -- For luasnip users.
-                { name = 'buffer' }, -- word suggestion from current buffer
+                { name = 'buffer' },  -- word suggestion from current buffer
                 { name = 'path' }
             }),
             formatting = {
-                format = function (entry, item)
-                   local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
+                format = function(entry, item)
+                    local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
 
                     item = lspkind.cmp_format({
-                        maxwidth = 50,          -- 1. Truncates long completion items
-                        ellipsis_char = "...",  -- 2. Appends '...' when truncated
+                        maxwidth = 50,         -- 1. Truncates long completion items
+                        ellipsis_char = "...", -- 2. Appends '...' when truncated
                     })(entry, item)
 
                     if color_item.abbr_hl_group then
@@ -66,9 +68,12 @@ return { "hrsh7th/nvim-cmp",
             },
         })
 
-      cmp.setup.cmdline({ "/", "?" }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = { { name = "buffer" } },
-      })
+        cmp.setup.cmdline({ "/", "?" }, {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = "buffer" },
+                { name = "cmdline_history" },
+            },
+        })
     end
 }

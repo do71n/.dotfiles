@@ -8,6 +8,9 @@ return {
             autocomplete = {
                 enable = true,
                 delay = 50,
+                predicate = function()
+                    return vim.fn.getcmdtype() == ":" and vim.fn.getcmdline() ~= ''
+                end
             },
 
             autopeek = {
