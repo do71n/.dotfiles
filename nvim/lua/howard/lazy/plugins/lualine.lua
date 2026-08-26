@@ -31,7 +31,7 @@ return {
                 component_separators = { left = '', right = '' },
                 section_separators = { left = left_sep_faded, right = '' },
                 disabled_filetypes = {
-                    statusline = { 'lazygit' },
+                    statusline = { 'lazygit', },
                 },
             },
             sections = {

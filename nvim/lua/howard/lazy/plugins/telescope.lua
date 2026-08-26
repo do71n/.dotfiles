@@ -5,34 +5,52 @@ return {
     {
         "nvim-telescope/telescope.nvim",
 
-        tag = "v0.2.2",
-
         dependencies = {
             "nvim-lua/plenary.nvim",
-            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+            "jvgrootveld/telescope-zoxide",
         },
 
         config = function()
-            require('telescope').setup({
-                extensions = {
-                    fzf = {},
-                }
-            })
-            require('telescope').load_extension('fzf')
-            require('telescope').load_extension('ui-select')
+            local telescope = require('telescope')
             local builtin = require('telescope.builtin')
 
+            telescope.setup({
+                extensions = {
+                    fzf = {},
+                    zoxide = {
+                        prompt_title = "pick directory",
+                        mappings = {
+                            default = {
+                                keepinsert = false,
+                                action = function(selection)
+                                    vim.cmd("tabnew")
+                                    vim.cmd("tcd " .. vim.fn.fnameescape(selection.path))
+                                    builtin.find_files({ cwd = selection.path })
+                                end,
+                            },
+                        },
+                    },
+                }
+            })
+
+            telescope.load_extension('fzf')
+            telescope.load_extension('ui-select')
+            telescope.load_extension('zoxide')
+            telescope.load_extension('scope')
+
             -- frequently used
-            vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-            vim.keymap.set('n', '<leader>fp', builtin.find_files, {})
+            vim.keymap.set('n', '<leader>fb', function() builtin.buffers({ cwd = vim.fn.getcwd() }) end)
+            -- vim.keymap.set('n', '<leader>fb', builtin.buffers({}), {})
+            vim.keymap.set('n', '<leader>fp', function () builtin.find_files({ hidden = true }) end, {})
             vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
             vim.keymap.set('n', '<C-p>', builtin.git_files, {})
             vim.keymap.set('n', '<leader>lg', builtin.live_grep, {})
+            vim.keymap.set('n', '<leader>bg', builtin.current_buffer_fuzzy_find, {})
             vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Telescope Git status' })
             vim.keymap.set('n', '<leader>sg', function()
                 builtin.grep_string({ search = vim.fn.input("Grep > ") })
             end)
-
             vim.keymap.set('n', 'gr', builtin.lsp_references, {})
 
             -- find the **current** word
@@ -49,6 +67,11 @@ return {
             -- nvim specific documentation
             vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
             vim.keymap.set('n', '<leader>man', builtin.man_pages, {})
+
+            -- Zoxide
+            vim.keymap.set("n", "<leader>fz", telescope.extensions.zoxide.list)
+
+            vim.keymap.set("n", "<leader>fa", telescope.extensions.scope.buffers, { desc = "All-tab buffers" })
         end
     },
 }
