@@ -7,29 +7,32 @@ eval "$(fzf --zsh)"
 
 # 2. Global Default Engine & Appearance (Applies to all fzf commands)
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --strip-cwd-prefix'
+
+# 3. Ctrl + T
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-export FZF_DEFAULT_OPTS='
+# UI
+export FZF_DEFAULT_OPTS="
   --height=60%
   --layout=reverse
+  --prompt='🔍 '
+  --pointer='➜'
   --border=rounded
-  --prompt="🔍 "
-  --pointer="➜ "
+  --preview 'bat --style=numbers --color=always {}'
   --preview-window=right:65%:wrap:border-left
-'
+"
 
 # 3. File Preview Settings (CTRL+T)
 export _FZF_PREVIEW_CMD='bat --color=always --style=plain,numbers --line-range=:500 {}'
 export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'"
 
-# 4. Custom History Search Override (CTRL+R)
 # Overrides global height/border specifically for History view
-export FZF_CTRL_R_OPTS="
-  --height=45%
-  --border=sharp
-  --header='[ 📜 Cmd History ]'
-  --prompt='🔍 Search: '
-"
+# export FZF_CTRL_R_OPTS="
+#   --height=45%
+#   --border=sharp
+#   --header='[ 📜 Cmd History ]'
+#   --prompt='🔍 Search: '
+# "
 
 # =========================================================
 # Custom Widget: Files Excluding Hidden (CTRL+F)
@@ -42,4 +45,9 @@ _fzf_file_no_hidden() {
   zle reset-prompt
 }
 zle -N _fzf_file_no_hidden
+
 bindkey '^F' _fzf_file_no_hidden
+
+# ---- zsh-autosuggestions: path-aware partial accept ----
+WORDCHARS="${WORDCHARS//\//}"
+bindkey '^B' forward-word
