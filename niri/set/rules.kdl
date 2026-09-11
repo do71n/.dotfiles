@@ -1,32 +1,30 @@
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Window-Rules
-
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
-// Add this to your top-level configuration
-window-rule {
+// ================ General Configuration ================ //
+window-rule { // enable rounded corners for all windows.
     geometry-corner-radius 12
     clip-to-geometry true
 }
 
-// start  ================ Noctalia Configuration ================ start //
+window-rule {
+    match is-floating=true
+    focus-ring {
+        off
+    }
+}
+
+// ================ Noctalia Configuration ================ //
 window-rule {
     match app-id="dev.noctalia.Noctalia"
     open-floating true
     default-column-width { fixed 1080; }
-    default-window-height { fixed 920; }
+    default-window-height { fixed 720; }
 }
 
 debug {
     // Allows notif actions and windows activation from Noctalia
     honor-xdg-activation-with-invalid-serial
 }
-// end ================ Noctalia Configuration ================ end //
 
+// ================ Program Specific Configuration ================ //
 window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
@@ -36,18 +34,25 @@ window-rule {
 
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
-window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+// Zen-browser
+window-rule { // Open the Firefox picture-in-picture player as floating by default.
+    match app-id=r#"zen$"# title="^Picture-in-Picture$"
     open-floating true
+    default-column-width { fixed 480; }
+    default-window-height { fixed 270; }
+    // Optional: place it in a corner
+    // default-floating-position x=16 y=48 relative-to="bottom-left"
 }
 
+// Ghostty
 window-rule {
     match app-id="com.mitchellh.ghostty"
     draw-border-with-background false
+    opacity 0.8
+
+    background-effect {
+        blur true
+    }
 }
 
 // Floating for quick note windows
@@ -61,6 +66,11 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    match app-id="ZenNotes"
+    default-column-width { proportion 0.5; }
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -72,12 +82,36 @@ window-rule {
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
 }
-window-rule {
-    match app-id="neovide"
-    open-on-workspace "2"
-    open-maximized true
-}
+
+// window-rule {
+//     match app-id="neovide"
+//     open-on-workspace "2"
+//     open-maximized true
+// }
 
 layer-rule {
     match namespace="^noctalia-desktop-widget-weater-"
+}
+
+// 2. Create a window rule that forces all Steam games to open there
+window-rule {
+    match app-id=r#"^steam$"#
+    // exclude title=r#"^notificationtoasts_\d+_desktop$"#
+    // open-on-workspace "game"
+    open-maximized true
+}
+
+window-rule {
+    match app-id=r#"^steam$"# title=r#"^notificationtoasts_\d+_desktop$"#
+    open-floating true
+    // default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+layer-rule {
+    match namespace="^noctalia-wallpaper"
+    place-within-backdrop true
+}
+
+layout {
+    background-color "transparent"
 }

@@ -8,14 +8,18 @@ include "set/keybinds.kdl"
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
 
-
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     skip-at-startup
 }
 
 switch-events {
-    lid-close { spawn "noctalia" "msg" "session" "lock-and-suspend"; }
+    lid-close {
+        spawn "bash" "-c" "$HOME/.config/niri/scripts/lid-close.sh"
+    }
+    lid-open {
+        spawn "bash" "-c" "$HOME/.config/niri/scripts/lid-open.sh"
+    }
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -23,12 +27,12 @@ switch-events {
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
+prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/cat-left.png"
+screenshot-path "~/Pictures/Screenshots/%Y%m%d_%H:%M:%S.png"
 
 overview {
     backdrop-color "#26233a"
@@ -49,4 +53,4 @@ animations {
 }
 
 
-
+include "noctalia.kdl"

@@ -1,0 +1,4 @@
+    Mod+Equal { spawn "qs" "-p" "/home/dt/dev/meinShell" "ipc" "call" "osd" "volumeUp"; }
+    Mod+Minus { spawn "qs" "-p" "/home/dt/dev/meinShell" "ipc" "call" "osd" "volumeDown"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "qs" "-p" "/home/dt/dev/meinShell" "ipc" "call" "osd" "volumeUp"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "qs" "-p" "/home/dt/dev/meinShell" "ipc" "call" "osd" "volumeDown"; }
