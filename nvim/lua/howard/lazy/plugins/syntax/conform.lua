@@ -26,7 +26,7 @@ return {
         },
         formaters = {
             clang_format = {
-                prepend_args = { '--style={BasedOnStyle: Linux' },
+                prepend_args = { '--style={BasedOnStyle: LLVM, IndentWidth: 4, BreakBeforeBraces: Custom, BraceWrapping: {AfterFunction: true}}' },
             }
         }
         -- Optional: Uncomment this if you want it to format every time you save

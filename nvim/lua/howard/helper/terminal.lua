@@ -34,6 +34,9 @@ end
 
 -- Open (or focus) the floating terminal, started in the current buffer's directory.
 function M.open()
+    local fwd = vim.fn.expand("%:p:h"):gsub("oil://", "")
+    if fwd == "" or fwd == "." then fwd = vim.uv.cwd() or "" end
+
     -- Already open: just re-focus the floating window.
     if terminal_state.is_open and terminal_state.win and vim.api.nvim_win_is_valid(terminal_state.win) then
         vim.api.nvim_set_current_win(terminal_state.win)
@@ -67,11 +70,9 @@ function M.open()
     vim.api.nvim_set_hl(0, "FloatingTermBorder", { bg = "none" })
 
     -- Spawn a shell in the current buffer's directory (oil:// prefix stripped for oil buffers).
-    local has_terminal = vim.bo[terminal_state.buf].buftype == "terminal"
-    if not has_terminal then
-        local cwd = vim.fn.expand("%:p:h"):gsub("oil://", "")
-        vim.fn.jobstart({ os.getenv("SHELL") }, { term = true, cwd = cwd })
-
+    local shell = os.getenv("SHELL") or (vim.fn.has("win32") == 1 and "pwsh" or nil)
+    if vim.bo[terminal_state.buf].buftype ~= "terminal" then
+        vim.fn.jobstart({ shell }, { term = true, cwd = fwd })
     end
 
     terminal_state.is_open = true

@@ -4,6 +4,7 @@ vim.opt.guicursor = ""
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.wrap = true
+vim.opt.laststatus = 3
 -- vim.opt.colorcolumn = "80"
 
 --- line numbers

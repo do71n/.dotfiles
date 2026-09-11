@@ -6,6 +6,21 @@ return {
             return string.format('[b%d]', vim.api.nvim_get_current_buf())
         end
 
+        local function mode_or_buffer()
+            local mode = vim.api.nvim_get_mode().mode
+            -- NORMAL: persist the buffer number;
+            if mode == 'n' or mode == 'nt' then
+                return buffer_number()
+            end
+            -- MODES: use the mode label
+            local modes = {
+                i = 'I', ic = 'I',
+                v = 'V', V = 'V-LINE', ['\22'] = 'V-BLOCK',
+                c = 'CMD', R = 'R', t = 'T',
+            }
+            return modes[mode] or mode:upper()
+        end
+
         local function line_total()
             return string.format('%d/%d', vim.fn.line('.'), vim.fn.line('$'))
         end
@@ -36,7 +51,7 @@ return {
             },
             sections = {
                 lualine_a = {
-                    { buffer_number, color = { gui = 'bold' } },
+                    { mode_or_buffer, color = { gui = 'bold' } },
                 },
                 lualine_b = {
                     { 'branch', icon = '', color = { gui = 'bold' } },

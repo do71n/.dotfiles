@@ -11,7 +11,7 @@ return {
 
         cursor_color = "#d3cdc3",
         stiffness = 0.9,
-        trailing_stiffness = 0.4,
+        trailing_stiffness = 0.6,
         damping = 0.99,
         matrix_pixel_threshold = 0.5,
     },
