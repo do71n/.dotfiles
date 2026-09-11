@@ -1,0 +1,12 @@
+[include]
+files = ["plugin/"]
+
+[shell]
+# Launches applications as systemd services for better
+# crash handling and environment variable inheritance
+launch_apps_as_systemd_services = true
+
+[idle.behavior.lock]
+timeout = 1200
+action = "lock"
+enabled = true

@@ -1,0 +1,506 @@
+config_version = 2
+
+[bar]
+order = [ "main" ]
+
+    [bar.main]
+    capsule_padding = 8.0
+    center = [ "notifications", "group:g3", "clipboard" ]
+    end = [ "tray", "bluetooth", "group:g1", "session" ]
+    margin_edge = 6
+    margin_ends = 80
+    radius = 18
+    start = [ "group:g6", "media", "group:g5", "group:g4" ]
+
+        [[bar.main.capsule_group]]
+        enabled = true
+        fill = "surface_variant"
+        id = "g2"
+        members = [ "ram", "cpu" ]
+        opacity = 1.0
+        padding = 8.0
+
+        [[bar.main.capsule_group]]
+        border = "primary"
+        enabled = true
+        fill = "surface_variant"
+        id = "g4"
+        members = [ "network", "network_rx", "network_tx" ]
+        opacity = 1.0
+        padding = 8.0
+        radius = 12.0
+
+        [[bar.main.capsule_group]]
+        border = ""
+        enabled = true
+        fill = "#431050"
+        id = "g3"
+        members = [ "weather", "clock", "cat_2" ]
+        opacity = 1.0
+        padding = 8.0
+
+        [[bar.main.capsule_group]]
+        enabled = true
+        fill = "outline"
+        id = "g1"
+        members = [ "volume", "input_volume", "brightness", "battery" ]
+        opacity = 1.0
+        padding = 8.0
+
+        [[bar.main.capsule_group]]
+        border = "secondary"
+        enabled = true
+        fill = "surface_variant"
+        id = "g5"
+        members = [ "cat", "separator", "ram", "separator", "sysmon" ]
+        opacity = 1.0
+        padding = 8.0
+
+        [[bar.main.capsule_group]]
+        enabled = true
+        fill = "surface_variant"
+        id = "g6"
+        members = [ "workspaces" ]
+        opacity = 1.0
+        padding = 8.0
+
+[[control_center.shortcuts]]
+type = "bluetooth"
+
+[[control_center.shortcuts]]
+type = "caffeine"
+
+[[control_center.shortcuts]]
+type = "nightlight"
+
+[[control_center.shortcuts]]
+type = "notification"
+
+[[control_center.shortcuts]]
+type = "power_profile"
+
+[[control_center.shortcuts]]
+type = "wifi"
+
+[desktop_widgets]
+schema_version = 2
+widget_order = [ "desktop-widget-0000000000000001" ]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 160.0
+    box_width = 272.0
+    cx = 184.0
+    cy = 736.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "sysmon"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        background = false
+        stat = "cpu_usage"
+        stat2 = "cpu_temp"
+
+[dock]
+cross_axis_padding = 2
+enabled = true
+icon_size = 32
+main_axis_padding = 6
+position = "right"
+radius = 8
+reserve_space = false
+smart_auto_hide = true
+
+[location]
+address = "Hong Kong"
+
+[lockscreen]
+monitors = [ "eDP-1", "DP-7" ]
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [
+    "lockscreen-widget-000000000000000f",
+    "lockscreen-login-box@DP-9",
+    "lockscreen-login-box@DP-7",
+    "lockscreen-login-box@DP-1",
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-login-box@winit",
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000002",
+    "lockscreen-widget-000000000000000c",
+    "lockscreen-widget-000000000000000d",
+    "lockscreen-widget-000000000000000e",
+    "lockscreen-widget-0000000000000010"
+]
+
+    [lockscreen_widgets.grid]
+    cell_size = 8
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 1280.0
+    cy = 1321.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-7"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 961.0
+    output = "DP-7"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-7".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-9"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 961.0
+    output = "DP-9"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-9".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 64.0
+    box_width = 584.0
+    cx = 768.0
+    cy = 680.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 20.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@winit"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 462.0
+    cy = 742.0
+    output = "winit"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@winit".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 749.02093505859375
+    cy = 572.0
+    output = "eDP-1"
+    rotation = -0.0
+    type = "sticker"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = false
+        image_path = "/home/dt/Pictures/sticker/cat_point_at_you.png"
+        opacity = 1.0
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 400.0
+    box_width = 288.0
+    cx = 192.0
+    cy = 672.0
+    output = "eDP-1"
+    rotation = -0.0
+    type = "weather"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = false
+        forecast_days = 6
+        show_forecast = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-000000000000000c]
+    box_height = 640.0
+    box_width = 808.0
+    cx = 1296.0
+    cy = 640.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "sticker"
+
+        [lockscreen_widgets.widget.lockscreen-widget-000000000000000c.settings]
+        background = false
+        image_path = "/home/dt/Pictures/sticker/paek_gre.png"
+        opacity = 1.0
+
+    [lockscreen_widgets.widget.lockscreen-widget-000000000000000d]
+    box_height = 256.0
+    box_width = 272.0
+    cx = 768.0
+    cy = 208.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-000000000000000d.settings]
+        background = false
+        clock_style = "analog"
+
+    [lockscreen_widgets.widget.lockscreen-widget-000000000000000e]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 792.0
+    cy = 409.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-000000000000000e.settings]
+        background = false
+        format = "{:%H:%M} ({:%d/%m})"
+
+    [lockscreen_widgets.widget.lockscreen-widget-000000000000000f]
+    box_height = 48.0
+    box_width = 432.0
+    cx = 784.0
+    cy = 448.0
+    output = "eDP-1"
+    rotation = -0.0
+    type = "label"
+
+        [lockscreen_widgets.widget.lockscreen-widget-000000000000000f.settings]
+        background = false
+        title = "=========================="
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000010]
+    box_height = 48.0
+    box_width = 432.0
+    cx = 784.0
+    cy = 368.0
+    output = "eDP-1"
+    rotation = -0.0
+    type = "label"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000010.settings]
+        background = false
+        title = "=========================="
+
+[notification]
+background_opacity = 0.99999997764825821
+position = "bottom_right"
+
+[plugins]
+enabled = [ "dotnetrob/cat", "noctalia/bongocat" ]
+
+[shell]
+app_icon_color = "secondary"
+avatar_path = "/home/dt/Pictures/wallpaper/katze-grun.jpg"
+font_family = "CaskaydiaCove Nerd Font"
+lang = "en"
+niri_overview_type_to_launch_enabled = true
+
+    [shell.launcher]
+    categories = false
+    compact = true
+
+        [shell.launcher.providers.emoji]
+        global = false
+        prefix = "emo"
+
+        [shell.launcher.providers.session]
+        global = false
+
+        [shell.launcher.providers.wallpaper]
+        global = false
+
+    [shell.panel]
+    clipboard_placement = "attached"
+    launcher_placement = "attached"
+
+[theme]
+builtin = "Rosé Pine"
+community_palette = "Rose Pine Alt"
+mode = "dark"
+source = "community"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "ghostty", "niri" ]
+
+[wallpaper]
+directory = "/home/dt/Pictures/wallpaper"
+transition = [ "disc", "fade", "honeycomb", "stripes", "wipe", "zoom" ]
+
+    [wallpaper.default]
+    path = "/home/dt/Pictures/wallpaper/katze-grun.jpg"
+
+    [wallpaper.last]
+    path = "/home/dt/Pictures/wallpaper/katze-grun.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/dt/Pictures/wallpaper/katze-grun.jpg"
+
+[widget.active_window]
+display = "icon_only"
+
+[widget.battery]
+capsule = true
+capsule_fill = "on_surface_variant"
+
+[widget.bluetooth]
+capsule = true
+capsule_fill = "#190B65"
+
+[widget.brightness]
+capsule = true
+capsule_fill = "on_surface_variant"
+
+[widget.cat]
+cat_color = "on_surface"
+cat_color_mode = "custom"
+interactive = false
+scale = 1.2
+show_cpu_percent = true
+type = "dotnetrob/cat:cat"
+
+[widget.cat_2]
+audio_spectrum = true
+enable_scroll = false
+input_devices = [ "/dev/input/by-path/platform-i8042-serio-0-event-kbd" ]
+type = "noctalia/bongocat:cat"
+
+[widget.clock]
+capsule = true
+capsule_fill = "surface"
+capsule_radius = "auto"
+font_weight = 700
+format = "{:%b %d - %H:%M %a}"
+vertical_format = " "
+
+[widget.keyboard_layout]
+capsule = true
+enabled = false
+
+[widget.launcher]
+enabled = false
+
+[widget.media]
+album_art_only = true
+
+[widget.network]
+icon_color = "#08B53D"
+show_label = false
+show_vpn_label = true
+
+[widget.network_rx]
+capsule_padding = 0
+display = "text"
+glyph = "arrow-big-down-line"
+interactive = false
+network_speed_compact = true
+
+[widget.network_tx]
+display = "text"
+glyph = "arrow-big-up-line"
+interactive = false
+network_speed_compact = true
+
+[widget.power_profile]
+enable_scroll = false
+
+[widget.ram]
+capsule_border = "tertiary"
+capsule_radius = "auto"
+interactive = false
+stat = "ram_pct"
+
+[widget.separator]
+enable_scroll = false
+glyph = ""
+interactive = false
+label = "|"
+type = "custom_button"
+
+[widget.session]
+color = "error"
+
+[widget.sysmon]
+interactive = false
+stat = "disk_pct"
+
+[widget.tray]
+capsule_padding = 0
+detached_panel = true
+
+[widget.volume]
+capsule = true
+capsule_fill = "on_surface_variant"
+
+[widget.wallpaper]
+enabled = false
+
+[widget.weather]
+show_condition = false
+show_temperature = false
+
+[widget.workspaces]
+max_label_chars = 3
+style = "focus_hint"
